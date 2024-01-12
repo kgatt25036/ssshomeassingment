@@ -68,4 +68,15 @@ class CarController extends Controller
 
         return redirect()->route('cars.index')->with('message', 'Car has been updated successfully');
     }
+    public function destroy ($id)
+    {
+        $car = Car::find($id);
+        $car->delete();
+        return back()->with('message', 'Contact has been deleted successfully');
+    }
+    public function manufacturershow()
+    {
+        $manufacturers = Manufacturer::all();
+        return view('cars.manufacturershow', compact('manufacturers'));
+    }
 }
